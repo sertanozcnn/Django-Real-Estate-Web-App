@@ -1,0 +1,92 @@
+
+{% load humanize %}
+{% load static %}
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Teaser</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
+
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/listings-admin.css'%}" rel="stylesheet" />
+  
+  <link href="{% static 'css/style.css'%}" rel="stylesheet" />
+  
+  <link href="{% static 'css/listings-all.css'%}" rel="stylesheet" />
+  
+  <link href="{% static 'css/listings-lightbox.min.css'%}" rel="stylesheet" />
+  <link href="{% static 'css/listings-style.css'%}" rel="stylesheet" />
+  <link href="{% static 'css/responsive.css'%}" rel="stylesheet" />
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+
+</head>
+
+
+<div class="col-md-6 col-lg-4 mb-4">
+
+
+  <div class="card listing-preview">
+
+    <a href="{% url 'listing' listing.id %}" class="stretched-link">
+      <img class="card-img-top listing-img" src="{{ listing.image.url }}" alt="">
+
+
+
+      <div class="card-img-overlay">
+        <h2>
+          <span class="badge badge-success">${{ listing.price | intcomma }}</span>
+
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="listing-heading text-center max-box">
+          <h4 class="text-primary">{{ listing.title }}</h4>
+        </div>
+    </a>
+    <hr>
+    <div>
+      <p>
+        <i class="fas fa-map-marker text-secondary"></i>
+        {{ listing.address.city }}, {{ listing.address.zipcode }} - {{ listing.address.state.country.shortcut }}
+      </p>
+    </div>
+    <div class="row py-2">
+      <div class="col-6">
+        {{ _("M²") }}: {{ listing.sqft }}</div>
+      <div class="col-6">
+        {{ _("Garage") }}: {{ listing.garage }}</div>
+    </div>
+    <div class="row py-2">
+      <div class="col-6">
+        {{ _("Bedrooms") }}: {{ listing.bedrooms }}</div>
+      <div class="col-6">
+        {{ _("Bathrooms") }}: {{ listing.bathrooms }}</div>
+    </div>
+
+    <a href="{% url 'listing' listing.id %}"  class="btn btn-secondary btn-block boxBtn">{{ _("More Info") }}</a>
+  </div>
+</div>
+</div>
+
+
+
+<script type="text/javascript" src="{% static 'js/listings-bootstrap.bundle.min.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/listings-jquery-3.3.1.min.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/listings-lightbox.min.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/listings-main.min.js' %}"></script> 

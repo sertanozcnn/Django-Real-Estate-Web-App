@@ -1,0 +1,143 @@
+{% extends "index.html" %}
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Teaser</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css'%}" rel="stylesheet" />  
+</head>
+
+
+
+
+{% block content %}
+<body class="sub_page">
+  {% include 'layouts/_header.html' %}
+  
+  <!-- about section -->
+
+  <section class="about_section layout_padding-bottom">
+    <div class="square-box">
+      <img src="{% static 'images/square.png' %}" alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static 'images/abtimg3.jpg' %}" alt="">           
+          </div>      
+        </div>
+              
+        
+        <div class="col-md-6">
+          <div class="detail-box" style="font-size:18px">
+            <div class="heading_container">
+              <h2>
+                About Our Apartments
+              </h2>
+            </div>
+            <p>
+              As travelers ourselves, we set high standards from the very beginning. We have created beautifully designed and custom built rental apartments in the heart of Turkey in carefully selected locations such as Istanbul, Izmir, Antalya, Muğla and many more, ideal for the casual and leisure traveller.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="about_section layout_padding-bottom" style="margin-top:-100px;">
+    <div class="square-box">
+      <img src="{% static 'images/square3.png' %}" alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static 'images/abtimg.jpg' %}" alt="">           
+          </div>      
+        </div>
+              
+        
+        <div class="col-md-6">
+          <div class="detail-box" style="font-size:18px">
+            <div class="heading_container">           
+            </div>
+            <p>
+              Whether your stay is short or long enough to explore every corner of these fascinating cities, our team of young, creative and talented specialists will be there to assist you with all your needs during your stay in Turkey.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="about_section layout_padding-bottom" style="margin-top:-100px;">
+    <div class="square-box">
+      <img src="{% static 'images/square2.png' %}" alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static 'images/abtimg5.jpg' %}" alt="">           
+          </div>      
+        </div>
+              
+        
+        <div class="col-md-6">
+          <div class="detail-box" style="font-size:18px">
+            <div class="heading_container" >           
+            </div>
+            <p>
+              Do not hesitate to contact us for any small, large or out of this world ideas you may have.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+
+  <!-- end about section -->
+
+ 
+  {% include 'layouts/_footer.html' %}
+  <!-- end  footer section -->
+
+
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script> 
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script> 
+  <script type="text/javascript" src="{% static 'js/custom.js' %}"></script> 
+
+</body>
+
+</body>
+{%endblock%}
+</html>

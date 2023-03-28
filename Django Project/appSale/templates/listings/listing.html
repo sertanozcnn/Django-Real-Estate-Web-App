@@ -1,0 +1,286 @@
+
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+{% comment %} {% load filters %} {% endcomment %}
+
+
+
+
+
+<html>
+  <head>
+    <style>
+      .Zar:hover {
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+        position: relative;
+      }
+    </style>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+  
+    <title>Teaser</title>
+  
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
+  
+  
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/listings-admin.css'%}" rel="stylesheet" />
+    <link href="{% static 'css/listings-all.css'%}" rel="stylesheet" />
+    <link href="{% static 'css/listings-lightbox.min.css'%}" rel="stylesheet" />
+    <link href="{% static 'css/listings-style.css'%}" rel="stylesheet" />
+
+    <link href="{% static 'css/style.css'%}" rel="stylesheet" />
+    <link href="{% static 'css/responsive.css'%}" rel="stylesheet" />
+  
+  
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+    
+    
+
+  </head>
+  {%block content %}
+<body class="sub_page">
+  
+  
+
+  {% include 'layouts/_header2.html' %}
+
+
+
+ {% comment %} {% include 'core/partials/_showcase_section.html' %} {% endcomment %}
+
+
+
+
+
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">{{ _("Home") }}</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'listings' %}">{{ _("Listings") }}</a>
+          </li>
+          <li class="breadcrumb-item active">{{ listing.title }}</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Alerts -->
+  {% comment %} {% include 'core/partials/_alerts.html' %} {% endcomment %}
+
+<!-- Listing -->
+<section id="listing" class="py-4">
+  <div class="container">
+
+    <div class="row col-12 px-0">
+      <div class="col-8">
+        <a href="{% url 'listings' %}" class="btn btn-light mb-4">{{ _("Back To Listings") }}</a>
+      </div>
+      <div class="col-4 text-right mr-0 pr-0">
+
+	      {% if user.is_authenticated %}
+          {% if user.is_staff %}
+
+        <a href="{% url 'admin:listings_listing_change' listing.id %}" target="_blank"
+          class="btn btn-info text-white mr-0">
+          Edit
+        </a>
+	{% endif %}
+	{% endif%}
+      </div>
+    </div>
+
+    {% include 'layouts/_alerts.html' %}
+
+
+    <div class="row">
+      <div class="col-md-9">
+        <!-- Home Main Image -->
+        <img src="{{ listing.image.url }}" alt="" class="img-main img-fluid mb-3">
+        <!-- Thumbnails -->
+        <div class="row thumbs listing-second-title">
+          {% for img in listing.listingimage_set.all %}
+          <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2">
+            <a href="{{ img.image.url }}" data-lightbox="home-images">
+              <img src="{{ img.image.url }}" alt="" class="img-fluid img-inline-listing">
+            </a>
+          </div>
+          <br>
+          {% endfor%}
+        </div>
+
+
+
+
+        <!-- Fields -->
+        <div class="row fields">
+          <div class="col-12 ">
+
+            <h2 class="listing-second-title mt-3 mb-3">
+              {{ listing.title }}
+            </h2>
+
+            <span class="mb-3">
+              <i class="fas fa-map-marker text-secondary mb-5"></i>
+              {{ listing.address }}
+            </span>
+
+          </div>
+
+
+          <!-- Description -->
+          <div class="col-md-12 mb-5">
+            <h5 class="mb-3">{{ _("Description") }}</h5>
+            <p class="mb-2">{{ listing.description }}</p>
+
+            {%if listing.protected %}
+            <small class="uppercase">
+              {{ _("This object is listed") }}
+            </small>
+
+            {% else %}
+
+            <small>
+              {{ _(" ") }}
+            </small>
+
+            {% endif %}
+
+          </div>
+
+
+          <div class="col-md-6 p-0">
+            <ul class="list-group list-group-flush">
+
+
+              <li class="list-group-item" >
+                <i class="fas fa-bed text-secondary pr-2"></i> {{ _("Bedrooms") }}:
+                <span class="float-right">{{ listing.bedrooms }}</span>
+              </li>
+
+              <li class="list-group-item">
+                <i class="fas fa-bath text-secondary pr-2"></i> {{ _("Bathrooms") }}:
+                <span class="float-right">{{ listing.bathrooms }}</span>
+              </li>
+
+              <li class="list-group-item">
+                <i class="fas fa-car text-secondary pr-2"></i> {{ _("Garage") }}:
+                <span class="float-right">{{ listing.garage }}
+                </span>
+              </li>
+
+              <li class="list-group-item">
+                <i class="fas fa-arrows-alt-v text-secondary pr-2"></i> {{ _("Ceiling height") }}:
+                <span class="float-right">{{ listing.ceiling_height }} {{ _("m") }}
+                </span>
+              </li>
+
+
+
+            </ul>
+          </div>
+
+
+          <div class="col-md-6 p-0">
+            <ul class="list-group list-group-flush">
+
+              <li class="list-group-item">
+                <i class="fas fa-money-bill-alt text-secondary pr-2"></i> {{ _("Price") }}
+                <span class="float-right">{{ listing.price | intcomma }} €</span>
+              </li>
+
+              <li class="list-group-item">
+                <i class="fas fa-th-large text-secondary pr-2"></i> {{ _("Square Feet") }}:
+                <span class="float-right">{{ listing.sqft }} {{ _("m²") }}
+
+                </span>
+              </li>
+              <li class="list-group-item">
+                <i class="fas fa-square text-secondary pr-2"></i> {{ _("Lot Size") }}:
+                <span class="float-right">{{ listing.lot_size }} {{ _("m²") }}
+                </span>
+              </li>
+              <li class="list-group-item">
+                <i class="fas fa-calendar text-secondary pr-2"></i> {{ _("Free from") }}:
+                <span class="float-right">{{ listing.free_date }}</span>
+              </li>
+
+
+            </ul>
+
+          </div>
+
+
+          <div class="col-12 px-3 my-5">
+            
+          </div>
+
+        </div>
+
+        
+
+      </div>
+
+
+       {% include 'contacts/_partials/_realtor-contact-box.html' %} 
+
+    </div>
+  </div>
+</section>
+
+
+{% include 'layouts/_footer.html' %}
+
+
+</body>
+
+</body>
+{% endblock %}
+
+
+<script>
+  function myMap() {
+    const myLatLng = {
+      lat: {{ listing.get_coordinates.latitude|stringformat:"f"}},
+      lng: {{ listing.get_coordinates.longitude|stringformat:"f" }}
+    };
+  var mapProp = { center: new google.maps.LatLng(myLatLng), zoom: 14 };
+  var map = new google.maps.Map(document.getElementById("map"), mapProp);
+  const marker = new google.maps.Marker({
+    position: myLatLng,
+    map,
+    title: "{{ listing.get_coordinates.address }}"
+  });
+  }
+
+</script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=[YOUR-API-KEY]&callback=myMap"></script>
+  <script type="text/javascript" src="{% static 'js/listings-bootstrap.bundle.min.js' %}"></script> 
+  <script type="text/javascript" src="{% static 'js/listings-jquery-3.3.1.min.js' %}"></script> 
+  <script type="text/javascript" src="{% static 'js/listings-lightbox.min.js' %}"></script> 
+  <script type="text/javascript" src="{% static 'js/listings-main.min.js' %}"></script> 
+
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script> 
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script> 
+  <script type="text/javascript" src="{% static 'js/custom.js' %}"></script> 
+
+</html>

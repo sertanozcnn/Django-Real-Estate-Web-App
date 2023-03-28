@@ -1,0 +1,107 @@
+
+
+{%load static%}
+  
+  <!-- info section -->
+
+  
+  <section class="info_section ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="info_contact">
+            <h5>
+              About Apartment
+            </h5>
+            <div>
+              <div class="img-box">
+                <i class="fa-solid fa-location-dot fa-xl" style="width: 50px;"></i>
+              </div>
+              <p>
+                İstanbul
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <i class="fa-solid fa-mobile fa-xl" style="width: 50px;"></i>
+              </div>
+              <p>
+                +90 555 666 3456
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <i class="fa-solid fa-envelope fa-xl" style="width: 50px;"></i>
+              </div>
+              <p>
+                sertanozcan.tr@gmail.com
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>
+              Information
+            </h5>
+            <p>
+              <a href="{% url 'about' %}" style="color:white;">
+                About
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="info_links">
+            <h5>
+              Useful Link
+            </h5>
+            <ul>
+              <li>
+                <a href="www.modernseo.com">
+                  ModernSEO
+                </a>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_form ">
+            <h5>
+              Newsletter
+            </h5>
+            <form action="{% url 'subscribe'  %}">
+              <button>Subscribe</button>
+            </form>
+            <div class="social_box">
+              <a href="https://facebook.com/">
+                <img src="{% static 'images/fb.png' %}" alt=""> 
+              </a>
+              <a href="https://twitter.com/">
+                <img src="{% static 'images/twitter.png' %}" alt=""> 
+              </a>
+              <a href="https://www.linkedin.com/">
+                <img src="{% static 'images/linkedin.png' %}" alt="">    
+              </a>
+              <a href="https://www.youtube.com/">
+                <img src="{% static 'images/youtube.png' %}" alt=""> 
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section ">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">ModernSEO</a>
+      </p>
+    </div>
+  </section>

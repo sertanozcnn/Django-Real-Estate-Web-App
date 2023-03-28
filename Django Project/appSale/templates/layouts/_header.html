@@ -1,0 +1,115 @@
+
+{%load static%}
+<head>
+  <style>
+    .navbar-brand img {
+      width: 220px;
+      margin-top:5px;
+    }
+
+  </style>
+</head>
+
+<div class="hero_area">
+  <!-- header section strats -->
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand " href="{% url 'index' %}">
+          <img src="{% static 'images/home_logo.png'%}" alt="" />
+        </a>
+        <div class="navbar-collapse" id="">
+          <ul class="navbar-nav justify-content-between ">
+            <div class="User_option" >
+              {% if user.is_authenticated %} {% if user.is_staff %}
+          {% endif %} 
+
+
+
+
+            <li class="">
+              {% if 'login' in request.path %}  {% else %}  {% endif %}
+              <a  class="mr-4 HoverColor" href="{% url 'profile' user.id %}">           
+                Profile
+              </a>            
+              
+            </li>
+
+            <li class="">
+              {% if 'login' in request.path %}  {% else %}  {% endif %}
+              <a  class="mr-4 HoverColor" href="{% url 'dashboard' %}">           
+                Dashboard
+              </a>            
+              
+            </li>
+
+
+            <li class="">
+              {% if 'register' in request.path %}  {% else %}   {% endif %} 
+              <a   class="HoverColor" href="javascript:{document.getElementById('logout').submit()}">
+                Logout
+                <form action="{% url 'logout' %}" method="POST" id="logout">
+                  {% csrf_token %}
+                  <input type="hidden">
+                </form>
+              </a>      
+              
+            </li>
+
+                  
+
+
+
+          {% else %} 
+
+               <li class="">
+                 {% if 'login' in request.path %}  {% else %}  {% endif %} 
+                <a  class="mr-4 HoverColor" href="{% url 'login' %}">           
+                  Login
+                </a>
+
+              </li> 
+
+              <li class="">                           
+               {% if 'register' in request.path %}  {% else %}   {% endif %} 
+               <a   class="HoverColor" href="{% url 'register' %}">
+                 Sign up
+               </a>
+             </li> 
+
+
+
+          {% endif %}
+
+
+            </div>
+          </ul>
+
+          <div class="custom_menu-btn">
+            <button onclick="openNav()">
+              <span class="s-1">
+
+              </span>
+              <span class="s-2">
+
+              </span>
+              <span class="s-3">
+
+              </span>
+            </button>
+          </div>
+          <div id="myNav" class="overlay">
+            <div class="overlay-content">
+              <a href="{% url 'index' %}">HOME</a>
+              <a href="{% url 'about' %}">ABOUT</a>
+              <a href="{% url 'listings' %}">HOUSE</a>
+              <a href="{% url 'price' %}">PRICING</a>
+              <a href="{% url 'contact' %}">CONTACT US</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- end header section -->
+</div>
